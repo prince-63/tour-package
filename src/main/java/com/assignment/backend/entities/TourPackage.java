@@ -25,10 +25,8 @@ public class TourPackage {
 
     private String imageUrl;
 
-    private Integer discountInPercentage;
+    private Integer percentageDiscount;
 
     private BigDecimal actualPrice;
-
-    private BigDecimal discountedPrice;
 
 }
