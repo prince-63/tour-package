@@ -49,4 +49,12 @@ public class TourPackageController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @GetMapping(SEARCH_TOUR_PACKAGE)
+    public ResponseEntity<ResponseDTO<List<TourPackageResponseDTO>>> searchTourPackageByLocation(@RequestParam String location) {
+        List<TourPackageResponseDTO> tourPackageResponseDTOList = tourPackageService.searchTourPackageByLocation(location);
+        ResponseDTO<List<TourPackageResponseDTO>> response = new ResponseDTO<>();
+        response.setMessage(TOUR_PACKAGE_RETRIEVED_SUCCESSFULLY);
+        response.setData(tourPackageResponseDTOList);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
 }

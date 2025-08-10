@@ -17,6 +17,8 @@ public class TourPackageResponseDTO {
 
     private String duration;
 
+    private String imageUrl;
+
     private Integer percentageDiscount;
 
     private BigDecimal actualPrice;

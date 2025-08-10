@@ -3,6 +3,7 @@ package com.assignment.backend.services.impl;
 import com.assignment.backend.dto.TourPackageRequestDTO;
 import com.assignment.backend.dto.TourPackageResponseDTO;
 import com.assignment.backend.entities.TourPackage;
+import com.assignment.backend.exceptions.NotFoundException;
 import com.assignment.backend.exceptions.TourPackageNotFoundException;
 import com.assignment.backend.mapper.TourPackageMapper;
 import com.assignment.backend.repositories.TourPackageRepository;
@@ -46,6 +47,22 @@ public class TourPackageServiceImpl implements TourPackageService {
         TourPackageResponseDTO tourPackageResponseDTO = TourPackageMapper.toResponseDTO(tourPackage);
         tourPackageResponseDTO.setDiscountedPrice(calculateDiscountedPrice(tourPackageResponseDTO.getActualPrice(), tourPackageResponseDTO.getPercentageDiscount()));
         return tourPackageResponseDTO;
+    }
+
+    @Override
+    public List<TourPackageResponseDTO> searchTourPackageByLocation(String location) {
+        List<TourPackage> tourPackages = tourPackageRepository.findByLocationContainsIgnoreCase(location);
+
+        if (tourPackages.isEmpty()) {
+            throw new NotFoundException(String.format("TourPackage with location %s not found", location));
+        }
+
+        return tourPackages.stream().map(tourPackage -> {
+            BigDecimal discount = calculateDiscountedPrice(tourPackage.getActualPrice(), tourPackage.getPercentageDiscount());
+            TourPackageResponseDTO tourPackageResponseDTO = TourPackageMapper.toResponseDTO(tourPackage);
+            tourPackageResponseDTO.setDiscountedPrice(discount);
+            return tourPackageResponseDTO;
+        }).toList();
     }
 
     private BigDecimal calculateDiscountedPrice(BigDecimal actualPrice, Integer discountInPercentage) {

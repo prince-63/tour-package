@@ -13,4 +13,6 @@ public interface TourPackageService {
 
     TourPackageResponseDTO getTourPackageById(Long id);
 
+    List<TourPackageResponseDTO> searchTourPackageByLocation(String location);
+
 }
