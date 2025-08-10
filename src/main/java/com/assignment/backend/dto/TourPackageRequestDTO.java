@@ -5,9 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class TourResponseDTO {
-
-    private Long id;
+public class TourPackageRequestDTO {
 
     private String title;
 
@@ -17,10 +15,8 @@ public class TourResponseDTO {
 
     private String duration;
 
-    private Integer discountInPercentage;
+    private Integer percentageDiscount;
 
     private BigDecimal actualPrice;
-
-    private BigDecimal discountedPrice;
 
 }
