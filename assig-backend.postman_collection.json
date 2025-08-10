@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "9f770e78-0e1b-4dce-9f97-c9aefd291692",
+		"name": "assig-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42434904"
+	},
+	"item": [
+		{
+			"name": "add-tour-package",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"European City Tour\",\r\n    \"description\": \"10-day guided tour covering Paris, Rome, and Barcelona with cultural activities.\",\r\n    \"location\": \"Europe\",\r\n    \"duration\": \"10Days/9Nights\",\r\n    \"percentageDiscount\": 12,\r\n    \"actualPrice\": 2500.00\r\n  }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "/api/v1/tour-package/add",
+					"path": [
+						"api",
+						"v1",
+						"tour-package",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-tour-package",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"European City Tour\",\r\n    \"description\": \"10-day guided tour covering Paris, Rome, and Barcelona with cultural activities.\",\r\n    \"location\": \"Europe\",\r\n    \"duration\": \"10Days/9Nights\",\r\n    \"percentageDiscount\": 12,\r\n    \"actualPrice\": 2500.00\r\n  }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "/api/v1/tour-package/all",
+					"path": [
+						"api",
+						"v1",
+						"tour-package",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-tour-package-by-id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"European City Tour\",\r\n    \"description\": \"10-day guided tour covering Paris, Rome, and Barcelona with cultural activities.\",\r\n    \"location\": \"Europe\",\r\n    \"duration\": \"10Days/9Nights\",\r\n    \"percentageDiscount\": 12,\r\n    \"actualPrice\": 2500.00\r\n  }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "/api/v1/tour-package/1",
+					"path": [
+						"api",
+						"v1",
+						"tour-package",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search-tour-package",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"European City Tour\",\r\n    \"description\": \"10-day guided tour covering Paris, Rome, and Barcelona with cultural activities.\",\r\n    \"location\": \"Europe\",\r\n    \"duration\": \"10Days/9Nights\",\r\n    \"percentageDiscount\": 12,\r\n    \"actualPrice\": 2500.00\r\n  }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "/api/v1/tour-package/search?location=europe",
+					"path": [
+						"api",
+						"v1",
+						"tour-package",
+						"search"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "europe"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.request.url.protocol=\"http\";\r",
+					"pm.request.url.host=\"localhost\";\r",
+					"pm.request.url.port=\"8080\";"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
