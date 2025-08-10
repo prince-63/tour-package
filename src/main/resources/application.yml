@@ -1,3 +1,17 @@
+server:
+    port: ${SERVER_PORT:8080}
+
 spring:
     application:
         name: ${APPLICATION_NAME:assignment-backend}
+    datasource:
+        url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/assignment-backend}
+        username: ${DATABASE_USERNAME:root}
+        password: ${DATABASE_PASSWORD:root}
+    jpa:
+        show-sql: ${JPA_SHOW_SQL:false}
+        properties:
+            hibernate:
+                format_sql: ${HIBERNATE_FORMAT_SQL:false}
+        hibernate:
+            ddl-auto: update
