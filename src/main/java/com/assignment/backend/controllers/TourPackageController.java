@@ -4,6 +4,7 @@ import com.assignment.backend.dto.ResponseDTO;
 import com.assignment.backend.dto.TourPackageRequestDTO;
 import com.assignment.backend.dto.TourPackageResponseDTO;
 import com.assignment.backend.services.TourPackageService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class TourPackageController {
     private final TourPackageService tourPackageService;
 
     @PostMapping(ADD_TOUR_PACKAGE)
-    public ResponseEntity<ResponseDTO<TourPackageResponseDTO>> addTourPackage(@RequestBody TourPackageRequestDTO tourPackageRequestDTO) {
+    public ResponseEntity<ResponseDTO<TourPackageResponseDTO>> addTourPackage(@Valid @RequestBody TourPackageRequestDTO tourPackageRequestDTO) {
         TourPackageResponseDTO tourPackageResponseDTO = tourPackageService.addTourPackage(tourPackageRequestDTO);
         ResponseDTO<TourPackageResponseDTO> response = new ResponseDTO<>();
         response.setMessage(TOUR_PACKAGE_ADD_SUCCESSFULLY);
