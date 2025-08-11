@@ -3,7 +3,6 @@ package com.assignment.backend.services.impl;
 import com.assignment.backend.dto.TourPackageRequestDTO;
 import com.assignment.backend.dto.TourPackageResponseDTO;
 import com.assignment.backend.entities.TourPackage;
-import com.assignment.backend.exceptions.NotFoundException;
 import com.assignment.backend.exceptions.TourPackageNotFoundException;
 import com.assignment.backend.mapper.TourPackageMapper;
 import com.assignment.backend.repositories.TourPackageRepository;
@@ -54,7 +53,7 @@ public class TourPackageServiceImpl implements TourPackageService {
         List<TourPackage> tourPackages = tourPackageRepository.findByLocationContainsIgnoreCase(location);
 
         if (tourPackages.isEmpty()) {
-            throw new NotFoundException(String.format("TourPackage with location %s not found", location));
+            return List.of();
         }
 
         return tourPackages.stream().map(tourPackage -> {
